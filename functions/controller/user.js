@@ -12,14 +12,14 @@ async function signup(req, res) {
       });
     }
     let hashpassword = await bcrypt.hash(req.body.password, 10);
-    console.log(hashpassword);
+
     if (!hashpassword) {
       return res.status(200).json({
         status: 1,
         message: "ma hoa that bai",
       });
     }
-    console.log(req.body);
+
     let data = await User.create({
       password: hashpassword,
       email: req.body.email,
@@ -39,7 +39,6 @@ async function signup(req, res) {
       data,
     });
   } catch (error) {
-    console.log(error);
     return res.status(200).json({
       status: 1,
       message: "loi server",

@@ -19,12 +19,6 @@ const UserSchema = new mongoose.Schema(
       required: [true, "Password is required"],
       min: 6,
     },
-    postion: {
-      type: String,
-      required: [true, "Postion is required"],
-      min: 6,
-      unique: true,
-    },
     role: {
       type: String,
       enum: ["admin", "member"],
