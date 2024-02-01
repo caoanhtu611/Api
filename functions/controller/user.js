@@ -19,11 +19,15 @@ async function signup(req, res) {
         message: "ma hoa that bai",
       });
     }
-
-    let data = await User.create({
-      password: hashpassword,
-      email: req.body.email,
+    console.log({
       username: req.body.username,
+      email: req.body.email,
+      password: hashpassword,
+    });
+    let data = await User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: hashpassword,
     });
 
     if (!data) {
@@ -35,13 +39,14 @@ async function signup(req, res) {
 
     return res.status(200).json({
       status: 0,
-      message: "thanh ocng",
+      message: "thanhcong",
       data,
     });
   } catch (error) {
+    console.log(error);
     return res.status(200).json({
       status: 1,
-      message: "loi server",
+      message: error,
     });
   }
 }
