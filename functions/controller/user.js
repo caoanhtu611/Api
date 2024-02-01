@@ -23,6 +23,7 @@ async function signup(req, res) {
     let data = await User.create({
       password: hashpassword,
       email: req.body.email,
+      username: req.body.username,
     });
 
     if (!data) {
